@@ -427,7 +427,6 @@ https://{host}:{port}/api/search
 
 </details>
 
-### v1.2.0 新增
 <details>
 <summary><b>好搜收录判断</b></summary>
 
@@ -444,6 +443,8 @@ https://{host}:{port}/api/search
 ||||
 
 </details>
+
+### v1.2.0 新增
 
 <details>
 <summary><b>抖音视频背景音提取</b></summary>
