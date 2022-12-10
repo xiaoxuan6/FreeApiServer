@@ -33,6 +33,8 @@ https://{host}:{port}/api/search
 
 ## 目前不开放
 
+### v1.1.0 新增
+
 <details>
 <summary><b>身份证查询</b></summary>
 
@@ -99,6 +101,8 @@ https://{host}:{port}/api/search
 </details>
 
 ## 免费接口
+
+### v1.0.0
 
 <details>
 <summary><b>获取指定日期的节假日信息</b></summary>
@@ -423,6 +427,7 @@ https://{host}:{port}/api/search
 
 </details>
 
+### v1.2.0 新增
 <details>
 <summary><b>好搜收录判断</b></summary>
 
