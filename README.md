@@ -16,7 +16,7 @@
 docker run -d --name free -p 10086:10086 xiaoxuan6/free_api_server:latest
 ```
 
-启动成功后就可以调用下面所有的免费接口
+启动成功后就可以调用下面所有的免费接口，所有的请求都是 `get`
 
 ```bazaar
 https://{host}:{port}/api/search
@@ -42,13 +42,20 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 id_card（版本 v1.2.0 之前为 idCard）和下面参数保持一致|
+|id_card|是|string|身份证号码|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|状态码 1:表示成功 其他表示失败|
+|msg|string|返回 成功/失败 信息|
+|data|object||
+|data.idCardNum|string|身份证号码|
+|data.address|string|身份证所属归属地|
+|data.birthday|string|生日|
+|data.sex|string|性别|
 
 </details>
 <details>
@@ -58,13 +65,19 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 mobile_location|
+|mobile|是|string|手机号|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|状态码 1:表示成功 其他表示失败|
+|msg|string|返回 成功/失败 信息|
+|data|object||
+|data.mobile|string|目标手机号|
+|data.province|string|归属地省份|
+|data.carrier|string|归属地描述|
 
 </details>
 <details>
@@ -74,13 +87,22 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 oil|
+|province|是|string|省份，合法值为：【安徽、北京、重庆、福建、甘肃、广东、广西、贵州、海南、河北、黑龙江、河南、湖北、湖南、江苏、江西、吉林、辽宁、内蒙古、宁夏、青海、陕西、上海、山东、山西、四川、天津、西藏、新疆、云南、浙江】|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|状态码 1:表示成功 其他表示失败|
+|msg|string|返回 成功/失败 信息|
+|data|object||
+|data.province|string|当前查询的省份|
+|data.t0|string|0号柴油油价|
+|data.t89|string|89号汽油油价|
+|data.t92|string|92号汽油油价|
+|data.t95|string|95号汽油油价|
+|data.t98|string|98号汽油油价|
 
 </details>
 <details>
@@ -90,13 +112,22 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 history_today|
+|item|否|int|是否需要详情，0：不需要详情 1：需要详情 默认值 0 可不传|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|状态码 1:表示成功 其他表示失败|
+|msg|string|返回 成功/失败 信息|
+|data|object||
+|data.*.picUrl|string|历史事件所对应的图片，可能为空|
+|data.*.title|string|历史事件的名称|
+|data.*.year|string|该历史事件发生所对应的年份|
+|data.*.month|string|该历史事件发生所对应的月份|
+|data.*.day|string|该历史事件发生所对应的日期|
+|data.*.details|string|历史事件的详细介绍，如果type=1，则此字段有返回值，否则不返回|
 
 </details>
 
@@ -111,13 +142,24 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 date_info|
+|date|是|string|指定日期的字符串，格式 ‘2018-02-23’。可以省略，则默认服务器的当前时间。|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|0服务正常。-1服务出错|
+|type|object||
+|type.type|int|节假日类型，分别表示 工作日、周末、节日、调休|
+|type.name|string|节假日类型中文名，可能值为 周一 至 周日、假期的名字、某某调休|
+|type.week|string|一周中的第几天。值为 1 - 7，分别表示 周一 至 周日|
+|holiday|object|如果不是节假日，holiday字段为null|
+|holiday.holiday|bool|true表示是节假日，false表示是调休|
+|holiday.name|string|节假日的中文名。如果是调休，则是调休的中文名，例如'国庆前调休|
+|holiday.wage|int|薪资倍数，1表示是1倍工资|
+|holiday.after|bool|只在调休下有该字段。true表示放完假后调休，false表示先调休再放假|
+|holiday.target|string|只在调休下有该字段。表示调休的节假日|
 
 </details>
 
@@ -128,13 +170,23 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 date_batch|
+|date|是|string|指定日期的字符串，多个日期之间使用 ',' 连接。最大长度查询个数50。兼容旧的格式用逗号,隔开，但不建议。格式 ‘2018-02-23’|
+|word|否|string|是否返回日期类型，默认不返回。可选值：’Y’ 返回，’N’ 不返回|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|0服务正常。-1服务出错|
+|holiday|object|传过来的日期是什么。传多少个就有多少个。|
+|holiday.*.holiday|bool|true表示是节假日，false表示是调休|
+|holiday.*.name|string|节假日类型中文名，可能值为 周一 至 周日、假期的名字、某某调休|
+|holiday.*.wage|string|薪资倍数，1表示是1倍工资|
+|type|object|只有明确指定参数 word=Y 时才返回类型信息|
+|type.*.type|int|节假日类型，分别表示 工作日、周末、节日、调休|
+|type.*.name|string|节假日类型中文名，可能值为 周一 至 周日、假期的名字、某某调休|
+|type.*.week|int|一周中的第几天。值为 1 - 7，分别表示 周一 至 周日|
 
 </details>
 
@@ -145,13 +197,28 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 date_next|
+|date|是|string|指定日期的字符串，格式 ‘2018-02-23’。可以省略，则默认服务器的当前时间|
+|word|否|string| 是否返回日期类型，默认不返回。可选值：’Y’ 返回，’N’ 不返回 |
+|week|否|string| 节假日是否包含周末，默认不包含。可选值：’Y’ 包含周末，’N’ 不包含 |
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|0服务正常。-1服务出错|
+|holiday|object||
+|holiday.name|string|节假日的中文名|
+|holiday.wage|int| 薪资倍数，3表示是3倍工资|
+|holiday.date|string| 节假日的日期|
+|holiday.rest|int| 表示当前时间距离目标还有多少天。比如今天是 2018-09-28，距离 2018-10-01 还有3天|
+|workday|object|如果节假日前没调休，则此字段为null|
+|workday.name|string|调休的中文名|
+|workday.wage|int| 薪资倍数，3表示是3倍工资|
+|workday.after|bool| true表示放完假后调休，false表示先调休再放假|
+|workday.target|string| 表示调休的节假日|
+|workday.date|string| 表示要调休的日期|
+|workday.rest|int| rest|
 
 </details>
 
@@ -162,13 +229,20 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 date_next_workday|
+|date|是|string|指定日期的字符串，格式 ‘2020-01-20’。可以省略，则默认服务器的当前时间|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|0服务正常。-1服务出错|
+|workday|string|如果没有查找到最近的工作日，则此字段为null。最大查找长度为30|
+|workday.workday|int|节假日类型，分别表示 工作日、周末、节日、调休。此接口只会返回 0 和 3 的类型|
+|workday.name|string|工作日类型中文名，可能值为 周一 至 周五、某某调休|
+|workday.week|int|一周中的第几天。值为 1 - 7，分别表示 周一 至 周日|
+|workday.date|string|表示要工作的日期|
+|workday.rest|int|表示当前时间距离目标还有多少天|
 
 </details>
 
@@ -179,13 +253,24 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 date_year|
+|date|是|string|指定年份或年月份，格式 ‘2019-02’ ‘2019-2’ 或者 ‘2019’。可以省略，则默认服务器当前时间的年份|
+|word|否|string|是否返回日期类型，默认不返回。可选值：’Y’ 返回，’N’ 不返回|
+|week|否|string|节假日是否包含周末，默认不包含。可选值：’Y’ 包含周末，’N’ 不包含|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|0服务正常。-1服务出错|
+|holiday|object||
+|holiday.*.name|string|节假日的中文名|
+|holiday.*.wage|int|薪资倍数，3表示是3倍工资|
+|holiday.*.date|string|节假日的日期|
+|type|object|只有明确指定参数 word=Y 时才返回类型信息|
+|type.*.type|int|节假日类型，分别表示 工作日、周末、节日、调休|
+|type.*.name|string|节假日类型中文名，可能值为 周一 至 周日、假期的名字、某某调休|
+|type.*.week|int|一周中的第几天。值为 1 - 7，分别表示 周一 至 周日|
 
 </details>
 
@@ -196,13 +281,14 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 date_tts|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|0服务正常。-1服务出错|
+|tts|string|返回字符串|
 
 </details>
 
@@ -213,13 +299,14 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 date_tts_next|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|0服务正常。-1服务出错|
+|tts|string|返回字符串|
 
 </details>
 
