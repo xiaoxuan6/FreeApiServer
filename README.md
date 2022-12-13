@@ -311,6 +311,40 @@ https://{host}:{port}/api/search
 </details>
 
 <details>
+<summary><b>随机图片</b></summary>
+
+请求参数：
+
+|名称|是否必填|类型|说明|
+|:---|:---|:---|:---|
+|||||
+
+响应参数：
+
+|名称|类型|说明|
+|:---|:---|:---|
+||||
+
+</details>
+
+<details>
+<summary><b>随机头像输出</b></summary>
+
+请求参数：
+
+|名称|是否必填|类型|说明|
+|:---|:---|:---|:---|
+|||||
+
+响应参数：
+
+|名称|类型|说明|
+|:---|:---|:---|
+||||
+
+</details>
+
+<details>
 <summary><b>土味情话</b></summary>
 
 请求参数：
@@ -540,13 +574,18 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 dy_music|
+|url|是|string|抖音链接|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|状态码 1:表示成功 其他表示失败|
+|msg|string|返回 成功/失败 信息|
+|desc	|string|	返回标题|
+|author_tx	|string|	返回头像|
+|music_url|	string|	返回歌曲链接  |
 
 </details>
 
@@ -557,13 +596,43 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 dm_60s|
+|item|否|string|是否输出JSON|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|状态码 1:表示成功 其他表示失败|
+|msg|string|返回 成功/失败 信息|
+
+</details>
+
+<details>
+<summary><b>菜谱查询</b></summary>
+
+请求参数：
+
+|名称|是否必填|类型|说明|
+|:---|:---|:---|:---|
+|type|是|string|类型：默认值 caipu|
+|word|是|string|	食材或菜名|
+
+响应参数：
+
+|名称|类型|说明|
+|:---|:---|:---|
+|code|int|状态码 1:表示成功 其他表示失败|
+|msg|string|返回 成功/失败 信息|
+|id|int|菜谱ID|
+|type_id|int|类型ID|
+|type_name|string|类型名称|
+|cp_name|string|菜肴名称|
+|zuofa|string|做法|
+|texing|string|菜肴特性|
+|tishi|string|提示|
+|tiaoliao|string|调料|
+|yuanliao|string|原料|
 
 </details>
 
@@ -574,13 +643,15 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 say_love|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|状态码 1:表示成功 其他表示失败|
+|msg|string|返回 成功/失败 信息|
+|content|string|	情话内容|
 
 </details>
 
@@ -613,13 +684,18 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 fxrate|
+|tocoin|是|string|目标兑换货币，例如人民币CNY|
+|fromcoin|是|string|来源货币，例如美元USD|
+|money|是|string|兑换金额，单位元|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|状态码 1:表示成功 其他表示失败|
+|msg|string|返回 成功/失败 信息|
+|money|string|金额价格，单位元|
 
 </details>
 
@@ -630,13 +706,17 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 dy_hot|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|状态码 1:表示成功 其他表示失败|
+|msg|string|返回 成功/失败 信息|
+|hotindex|int|热搜榜指数|
+|label|int|标签类型，1新，2荐，3热|
+|word|string|热点话题|
 
 </details>
 
@@ -647,13 +727,22 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 address_parse|
+|text|是|string|文本内容，ex:马云13800138000杭州市滨江区网商路699号|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|状态码 1:表示成功 其他表示失败|
+|msg|string|返回 成功/失败 信息|
+|mobile	|string|	移动电话号码|
+|name|	string|	收货人姓名|
+|province|	string|	省/特区/自治区/直辖市|
+|city	|string	|城市|
+|district|	string|	区县|
+|postcode|	string|	邮编（文本中优先否则默认区县级）|
+|detail	|string|	完整地址|
 
 </details>
 
@@ -664,13 +753,15 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 tiaogou_log|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|状态码 1:表示成功 其他表示失败|
+|msg|string|返回 成功/失败 信息|
+|content|	string|	内容|
 
 </details>
 
@@ -681,13 +772,18 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 cnmoney|
+|money|是 |string|金额阿拉伯数字|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|状态码 1:表示成功 其他表示失败|
+|msg|string|返回 成功/失败 信息|
+|cnresult	|string|	中文大写金额|
+|fnresult	|string	|西式的三位分节法数字|
+|enresult	|string	|英语大写金额|
 
 </details>
 
@@ -698,15 +794,35 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 chepai_retreat|
+|word|是|string|车牌号|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|状态码 1:表示成功 其他表示失败|
+|msg|string|返回 成功/失败 信息|
+|code|	string	|车牌代码|
+|city|	string	|所属城市|
+|province|	string|	所属省份|
+|citycode|	string|	城市行政代码|
 
 </details>
+
+### v1.3.0 新增计划
+
+- [ ] 抖音短视频解析
+- [ ] 驾驶识别
+- [ ] 行驶证识别
+- [ ] 增值发票识别
+- [ ] 人脸口罩识别
+- [ ] 智能鉴黄
+- [ ] 银行卡识别
+- [ ] 身份证识别
+- [ ] 车牌号识别
+- [ ] 快递查询
+- [ ] 营业执照识别
 
 # 捐赠
 
