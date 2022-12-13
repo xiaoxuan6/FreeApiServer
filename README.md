@@ -317,13 +317,17 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 rand_image_uri|
+|mode|否|string| 模式：vertical 竖向图片、transverse 横向图片、taobao 淘宝买家秀图片|
+|sort|否|string| 选择输出分类[美女、二次元、腿控、汽车、背景、动漫]，为空随机输出|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|返回的状态码 1服务正常、其他服务出错|
+| 	imgurl 	|string 	|返回图片地址|
+|msg 	|string 	|返回错误提示信息！|
 
 </details>
 
@@ -334,13 +338,16 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 avatar|
+|sort|否|string|选择输出分类[男、女、动漫男、动漫女]，为空随机输出|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|返回的状态码 1服务正常、其他服务出错|
+| 	imgurl 	|string 	|返回图片地址|
+|msg 	|string 	|返回错误提示信息！|
 
 </details>
 
@@ -351,13 +358,15 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 qinghua|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|返回的状态码 1服务正常、其他服务出错|
+| content 	|string 	|返回文本信息|
+|msg 	|string 	|返回错误提示信息！|
 
 </details>
 
@@ -368,32 +377,46 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 music|
+|sort|否|string|选择输出分类 热歌榜、新歌榜、飙升榜、抖音榜、电音榜 为空输出热歌榜|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|返回的状态码 1服务正常、其他服务出错|
+| name 	|string 	|歌名|
+| artistsname 	|string 	|歌手名|
+| url 	|string 	|播放地址|
+| picurl 	|string 	|封面图|
 
 </details>
 
-<details>
-<summary><b>网易云音乐热门评论</b></summary>
+[comment]: <> (<details>)
 
-请求参数：
+[comment]: <> (<summary><b>网易云音乐热门评论</b></summary>)
 
-|名称|是否必填|类型|说明|
-|:---|:---|:---|:---|
-|||||
+[comment]: <> (请求参数：)
 
-响应参数：
+[comment]: <> (|名称|是否必填|类型|说明|)
 
-|名称|类型|说明|
-|:---|:---|:---|
-||||
+[comment]: <> (|:---|:---|:---|:---|)
 
-</details>
+[comment]: <> (|type|是|string|类型：默认值 comments|)
+
+[comment]: <> (响应参数：)
+
+[comment]: <> (|名称|类型|说明|)
+
+[comment]: <> (|:---|:---|:---|)
+
+[comment]: <> (|code|int|返回的状态码 1服务正常、其他服务出错|)
+
+[comment]: <> (| data 	|string 	|返回文本信息|)
+
+[comment]: <> (|msg 	|string 	|返回错误提示信息！|)
+
+[comment]: <> (</details>)
 
 <details>
 <summary><b>短网址生成</b></summary>
@@ -402,13 +425,15 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 short_url|
+|url|否|string|需要进行缩短的长网址|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|返回的状态码 1服务正常、其他服务出错|
+| ae_url 	|string 	| 	返回缩短后的短网址|
 
 </details>
 
@@ -419,13 +444,15 @@ https://{host}:{port}/api/search
 
 |名称|是否必填|类型|说明|
 |:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 ck|
+|url|否|string|需要进行查询的域名|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|返回的状态码 1服务正常、其他服务出错|
+| msg 	|string 	| 	返回信息|
 
 </details>
 
@@ -435,14 +462,16 @@ https://{host}:{port}/api/search
 请求参数：
 
 |名称|是否必填|类型|说明|
-|:---|:---|:---|:---|
-|||||
+|type|是|string|类型：默认值 icp|
+|url|否|string|需要进行查询的域名|
 
 响应参数：
 
 |名称|类型|说明|
 |:---|:---|:---|
-||||
+|code|int|返回的状态码 1服务正常、其他服务出错|
+|domain|string|返回查询的域名|
+|icp|string|返回备案号|
 
 </details>
 
@@ -581,7 +610,7 @@ https://{host}:{port}/api/search
 
 |名称|类型|说明|
 |:---|:---|:---|
-|code|int|状态码 1:表示成功 其他表示失败|
+|code|int|状态码 200:表示成功 其他表示失败|
 |msg|string|返回 成功/失败 信息|
 |desc	|string|	返回标题|
 |author_tx	|string|	返回头像|
@@ -603,7 +632,7 @@ https://{host}:{port}/api/search
 
 |名称|类型|说明|
 |:---|:---|:---|
-|code|int|状态码 1:表示成功 其他表示失败|
+|code|int|状态码 200:表示成功 其他表示失败|
 |msg|string|返回 成功/失败 信息|
 
 </details>
@@ -622,7 +651,7 @@ https://{host}:{port}/api/search
 
 |名称|类型|说明|
 |:---|:---|:---|
-|code|int|状态码 1:表示成功 其他表示失败|
+|code|int|状态码 200:表示成功 其他表示失败|
 |msg|string|返回 成功/失败 信息|
 |id|int|菜谱ID|
 |type_id|int|类型ID|
@@ -649,7 +678,7 @@ https://{host}:{port}/api/search
 
 |名称|类型|说明|
 |:---|:---|:---|
-|code|int|状态码 1:表示成功 其他表示失败|
+|code|int|状态码 200:表示成功 其他表示失败|
 |msg|string|返回 成功/失败 信息|
 |content|string|	情话内容|
 
@@ -693,7 +722,7 @@ https://{host}:{port}/api/search
 
 |名称|类型|说明|
 |:---|:---|:---|
-|code|int|状态码 1:表示成功 其他表示失败|
+|code|int|状态码 200:表示成功 其他表示失败|
 |msg|string|返回 成功/失败 信息|
 |money|string|金额价格，单位元|
 
@@ -712,7 +741,7 @@ https://{host}:{port}/api/search
 
 |名称|类型|说明|
 |:---|:---|:---|
-|code|int|状态码 1:表示成功 其他表示失败|
+|code|int|状态码 200:表示成功 其他表示失败|
 |msg|string|返回 成功/失败 信息|
 |hotindex|int|热搜榜指数|
 |label|int|标签类型，1新，2荐，3热|
@@ -734,7 +763,7 @@ https://{host}:{port}/api/search
 
 |名称|类型|说明|
 |:---|:---|:---|
-|code|int|状态码 1:表示成功 其他表示失败|
+|code|int|状态码 200:表示成功 其他表示失败|
 |msg|string|返回 成功/失败 信息|
 |mobile	|string|	移动电话号码|
 |name|	string|	收货人姓名|
@@ -759,7 +788,7 @@ https://{host}:{port}/api/search
 
 |名称|类型|说明|
 |:---|:---|:---|
-|code|int|状态码 1:表示成功 其他表示失败|
+|code|int|状态码 200:表示成功 其他表示失败|
 |msg|string|返回 成功/失败 信息|
 |content|	string|	内容|
 
@@ -779,7 +808,7 @@ https://{host}:{port}/api/search
 
 |名称|类型|说明|
 |:---|:---|:---|
-|code|int|状态码 1:表示成功 其他表示失败|
+|code|int|状态码 200:表示成功 其他表示失败|
 |msg|string|返回 成功/失败 信息|
 |cnresult	|string|	中文大写金额|
 |fnresult	|string	|西式的三位分节法数字|
@@ -801,7 +830,7 @@ https://{host}:{port}/api/search
 
 |名称|类型|说明|
 |:---|:---|:---|
-|code|int|状态码 1:表示成功 其他表示失败|
+|code|int|状态码 200:表示成功 其他表示失败|
 |msg|string|返回 成功/失败 信息|
 |code|	string	|车牌代码|
 |city|	string	|所属城市|
