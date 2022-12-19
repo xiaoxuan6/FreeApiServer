@@ -1,14 +1,12 @@
 # 免费的 API 数据接口服务
 
-文档、快速、免费的 API 接口服务。共收录了 35 个接口
+稳定、快速、免费的 API 接口服务。共收录了 35 个接口
 
 感觉此项目不错的记得 `star`、`fork`、 `follow` 三连，后续 `科技与狠活` 能及时观看。
 
 ## 如何使用
 
-这里提供的 `docker`
-镜像 [xiaoxuan6/free_api_server](https://hub.docker.com/repository/docker/xiaoxuan6/free_api_server/general)
-，只需下载下来直接运行即可。
+这里提供的 `docker` 镜像 [xiaoxuan6/free_api_server](https://hub.docker.com/repository/docker/xiaoxuan6/free_api_server/general) ，只需下载下来直接运行即可。
 
 默认端口：`10086`
 
@@ -392,31 +390,31 @@ https://{host}:{port}/api/search
 
 </details>
 
-[comment]: <> (<details>)
+[comment]: <> "<details>"
 
-[comment]: <> (<summary><b>网易云音乐热门评论</b></summary>)
+[comment]: <> "<summary><b>网易云音乐热门评论</b></summary>"
 
-[comment]: <> (请求参数：)
+[comment]: <> "请求参数："
 
-[comment]: <> (|名称|是否必填|类型|说明|)
+[comment]: <> "|名称|是否必填|类型|说明|"
 
-[comment]: <> (|:---|:---|:---|:---|)
+[comment]: <> "|:---|:---|:---|:---|"
 
-[comment]: <> (|type|是|string|类型：默认值 comments|)
+[comment]: <> "|type|是|string|类型：默认值 comments|"
 
-[comment]: <> (响应参数：)
+[comment]: <> "响应参数："
 
-[comment]: <> (|名称|类型|说明|)
+[comment]: <> "|名称|类型|说明|"
 
-[comment]: <> (|:---|:---|:---|)
+[comment]: <> "|:---|:---|:---|"
 
-[comment]: <> (|code|int|返回的状态码 1服务正常、其他服务出错|)
+[comment]: <> "|code|int|返回的状态码 1服务正常、其他服务出错|"
 
-[comment]: <> (| data 	|string 	|返回文本信息|)
+[comment]: <> "| data 	|string 	|返回文本信息|"
 
-[comment]: <> (|msg 	|string 	|返回错误提示信息！|)
+[comment]: <> "|msg 	|string 	|返回错误提示信息！|"
 
-[comment]: <> (</details>)
+[comment]: <> "</details>"
 
 <details>
 <summary><b>短网址生成</b></summary>
@@ -684,27 +682,27 @@ https://{host}:{port}/api/search
 
 </details>
 
-[comment]: <> (<details>)
+[comment]: <> "<details>"
 
-[comment]: <> (<summary><b>身份证归属地</b></summary>)
+[comment]: <> "<summary><b>身份证归属地</b></summary>"
 
-[comment]: <> (请求参数：)
+[comment]: <> "请求参数："
 
-[comment]: <> (|名称|是否必填|类型|说明|)
+[comment]: <> "|名称|是否必填|类型|说明|"
 
-[comment]: <> (|:---|:---|:---|:---|)
+[comment]: <> "|:---|:---|:---|:---|"
 
-[comment]: <> (|||||)
+[comment]: <> "|||||"
 
-[comment]: <> (响应参数：)
+[comment]: <> "响应参数："
 
-[comment]: <> (|名称|类型|说明|)
+[comment]: <> "|名称|类型|说明|"
 
-[comment]: <> (|:---|:---|:---|)
+[comment]: <> "|:---|:---|:---|"
 
-[comment]: <> (||||)
+[comment]: <> "||||"
 
-[comment]: <> (</details>)
+[comment]: <> "</details>"
 
 <details>
 <summary><b>汇率查询</b></summary>
@@ -839,19 +837,104 @@ https://{host}:{port}/api/search
 
 </details>
 
-### v1.3.0 新增计划
+### v1.3.0 新增
 
-- [ ] 抖音短视频解析
-- [ ] 驾驶识别
-- [ ] 行驶证识别
-- [ ] 增值发票识别
-- [ ] 人脸口罩识别
-- [ ] 智能鉴黄
-- [ ] 银行卡识别
-- [ ] 身份证识别
-- [ ] 车牌号识别
-- [ ] 快递查询
-- [ ] 营业执照识别
+<details>
+<summary><b>抖音短视频解析</b></summary>
+
+请求参数：
+
+| 字段 | 是否必填 | 类型   | 描述                  |
+| ---- | -------- | ------ | --------------------- |
+| url  | 是       | string | 抖音链接              |
+| type | 是       | string | 类型：默认值 dy_jiexi |
+
+响应参数：
+
+| 字段     | 类型   | 描述     |
+| -------- | ------ | :------- |
+| title    | string | 标题     |
+| nickname | string | 昵称     |
+| music    | string | 背景音乐 |
+| play     | string | 视频地址 |
+
+</details>
+
+<details>
+<summary><b>身份证信息查询（更详细）</b></summary>
+
+请求参数：
+
+| 字段 | 是否必填 | 类型   | 描述                 |
+| ---- | -------- | ------ | -------------------- |
+| num  | 是       | string | 15位或18位身份证号码 |
+| type | 是       | string | 类型：默认值 card    |
+
+响应参数：
+
+| 字段          | 类型   | 描述         |
+| ------------- | ------ | ------------ |
+| msg           | string | 查询状态     |
+| region        | string | 查身份证地区 |
+| birthday      | string | 出生日期     |
+| gender        | string | 性別         |
+| age           | int    | 年龄         |
+| adult         | string | 成年/未成年  |
+| zodiac        | string | 生肖         |
+| constellation | string | 星座         |
+
+</details>
+
+<details>
+<summary><b>模拟快递信息</b></summary>
+
+请求参数：
+
+| 字段 | 是否必填 | 类型   | 描述                       |
+| ---- | -------- | ------ | -------------------------- |
+| type | 是       | string | 类型：默认值 kuaidi_domain |
+
+响应参数：
+
+| 字段     | 类型   | 描述                         |
+| -------- | ------ | ---------------------------- |
+| success  | bool   | true 表示成功 false 表示失败 |
+| reason   | string | 原因                         |
+| time     | string | 时间                         |
+| context  | string | 物流信息                     |
+| status   | int    |                              |
+| exname   | string |                              |
+| ico      | string |                              |
+| phone    | string | 手机号                       |
+| url      | string |                              |
+| nu       | string |                              |
+| company  | string | 公司                         |
+| ischeck  | int    |                              |
+| city     | string | 城市                         |
+| cityfrom | string |                              |
+
+</details>
+
+<details>
+<summary><b>翻译</b></summary>
+
+请求参数：
+
+| 字段    | 是否必填 | 类型   | 描述                     |
+| ------- | -------- | ------ | ------------------------ |
+| type    | 是       | string | 类型：默认值 translation |
+| keyword | 是       | string | 文本                     |
+
+响应参数：
+
+| 字段  | 类型   | 描述                        |
+| ----- | ------ | --------------------------- |
+| code  | int    | 200 表示成功 、其他表示失败 |
+| msg   | string | 错误信息                    |
+| data  | string | 翻译之后的信息              |
+| query | string | 请求翻译信息                |
+
+</details>
 
 # 捐赠
 
