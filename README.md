@@ -6,7 +6,15 @@
 
 ## 如何使用
 
-这里提供的 `docker` 镜像 [xiaoxuan6/free_api_server](https://hub.docker.com/repository/docker/xiaoxuan6/free_api_server/general) ，只需下载下来直接运行即可。
+这里提供的 `docker` 镜像 [xiaoxuan6/free_api_server](https://hub.docker.com/repository/docker/xiaoxuan6/free_api_server/general) ，只需下载直接运行即可。
+```bash
+docker pull xiaoxuan6/free_api_server
+```
+
+使用 github 镜像加速下载
+```bash
+docker pull ghcr.io/xiaoxuan6/free_api_server
+```
 
 默认端口：`10086`
 
